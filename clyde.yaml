@@ -20,7 +20,7 @@ points:
     thumbfan:
       anchor:
         ref: matrix_index_bottom
-        shift: [-0.15kx, -1.4ky]
+        shift: [-0.15kx, -1.5ky]
       columns:
         near:
         home:
@@ -81,9 +81,8 @@ pcbs:
           shift: [-0.15kx, -1.1ky]
           rotate: 90
         params:
-          # LHS: MCU buttons down
-          # RHS: MCU buttons up
-          orientation: 'down'
+          orientation: 'down' # LHS: MCU buttons down
+                              # RHS: MCU buttons up
           GP0: matrix_pinky_top
           GP1: matrix_pinky_home
           GP2: matrix_pinky_bottom
@@ -139,7 +138,7 @@ pcbs:
         what: mountinghole 
         where:
           ref: matrix_pinky_bottom
-          shift: [0, -1.15ky]
+          shift: [0, -1.1ky]
       mh_pinky:
         what: mountinghole 
         where:
