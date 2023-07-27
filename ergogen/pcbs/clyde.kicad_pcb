@@ -4,7 +4,7 @@
 
   (page A3)
   (title_block
-    (title clyde-mx)
+    (title clyde)
     (rev v1.0.0)
     (company Unknown)
   )
@@ -110,19 +110,19 @@
 (net 15 "matrix_inner_home")
 (net 16 "matrix_inner_top")
 (net 17 "thumbfan_near_home")
-(net 18 "thumbfan_far_home")
-(net 19 "GP0")
-(net 20 "GP1")
-(net 21 "GP2")
-(net 22 "GP3")
-(net 23 "GP4")
-(net 24 "GP5")
-(net 25 "GP6")
-(net 26 "GP7")
-(net 27 "GP8")
-(net 28 "GP9")
-(net 29 "GP10")
-(net 30 "ADC_VREF")
+(net 18 "thumbfan_home_home")
+(net 19 "thumbfan_far_home")
+(net 20 "GP12")
+(net 21 "GP19")
+(net 22 "GP20")
+(net 23 "GP21")
+(net 24 "GP22")
+(net 25 "GP26")
+(net 26 "GP27")
+(net 27 "GP28")
+(net 28 "GP29")
+(net 29 "ADC_VREF")
+(net 30 "GP24")
 (net 31 "3V3")
 (net 32 "VSYS")
 (net 33 "VBUS")
@@ -152,19 +152,19 @@
 (add_net "matrix_inner_home")
 (add_net "matrix_inner_top")
 (add_net "thumbfan_near_home")
+(add_net "thumbfan_home_home")
 (add_net "thumbfan_far_home")
-(add_net "GP0")
-(add_net "GP1")
-(add_net "GP2")
-(add_net "GP3")
-(add_net "GP4")
-(add_net "GP5")
-(add_net "GP6")
-(add_net "GP7")
-(add_net "GP8")
-(add_net "GP9")
-(add_net "GP10")
+(add_net "GP12")
+(add_net "GP19")
+(add_net "GP20")
+(add_net "GP21")
+(add_net "GP22")
+(add_net "GP26")
+(add_net "GP27")
+(add_net "GP28")
+(add_net "GP29")
 (add_net "ADC_VREF")
+(add_net "GP24")
 (add_net "3V3")
 (add_net "VSYS")
 (add_net "VBUS")
@@ -833,7 +833,7 @@
 
         
       (module MX (layer F.Cu) (tedit 5DD4F656)
-      (at 214.29000000000002 180.975 0)
+      (at 206.69250000000002 179.07 0)
 
       
       (fp_text reference "S16" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
@@ -877,7 +877,7 @@
 
         
       (module MX (layer F.Cu) (tedit 5DD4F656)
-      (at 233.34000000000003 180.975 0)
+      (at 225.74250000000004 179.07 0)
 
       
       (fp_text reference "S17" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
@@ -909,89 +909,115 @@
       
         
             
-            (pad 1 thru_hole circle (at 2.54 -5.08) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 18 "thumbfan_far_home"))
+            (pad 1 thru_hole circle (at 2.54 -5.08) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 18 "thumbfan_home_home"))
             (pad 2 thru_hole circle (at -3.81 -2.54) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 2 "GND"))
           
         
             
-            (pad 1 thru_hole circle (at -2.54 -5.08) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 18 "thumbfan_far_home"))
+            (pad 1 thru_hole circle (at -2.54 -5.08) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 18 "thumbfan_home_home"))
             (pad 2 thru_hole circle (at 3.81 -2.54) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 2 "GND"))
           )
         
 
-      (module RPi_Pico_TH_oval_face_up 
-        (layer F.Cu)
-        (attr through_hole)
-        (at 169.54500000000002 173.35500000000002 90)
-        (fp_text reference U0 (at 0 0) (layer F.Fab) hide
-          (effects (font (size 1 1) (thickness 0.15)))
-          (tstamp db43bf1b-fd5c-4a08-b779-663eec4fe496)
-        )
-        (fp_text value Pico (at 0 2.159) (layer F.Fab)
-          (effects (font (size 1 1) (thickness 0.15)))
-          (tstamp 957d80db-26db-4e86-a9dc-29ad4ca5095b)
-        )
-        (fp_line (start -10.5 25.5) (end 10.5 25.5) (layer F.SilkS) (width 0.12) (tstamp 0ee7d488-c8e1-4c44-86f9-cb3179c1dcc3))
-        (fp_line (start -10.5 -25.5) (end -10.5 25.5) (layer F.SilkS) (width 0.12) (tstamp 534bc5c9-f3fb-4616-80c7-bc456d144644))
-        (fp_line (start -10.5 -25.5) (end 10.5 -25.5) (layer F.SilkS) (width 0.12) (tstamp 68482ec9-0f6b-4f20-939f-192de417ebc3))
-        (fp_line (start 10.5 -25.5) (end 10.5 25.5) (layer F.SilkS) (width 0.12) (tstamp 81447e22-84f7-41be-abbd-faa8158a1a92))
-        (fp_circle (center -11.43 -24.13) (end -10.795 -24.13) (layer F.SilkS) (width 0) (fill solid) (tstamp 6850ce9f-d644-475c-8473-9f77a98004b5))
-        (fp_line (start 11 -26) (end -11 -26) (layer F.CrtYd) (width 0.12) (tstamp 2f9ae238-1fb9-4e15-8fa1-677f80c040a6))
-        (fp_line (start -11 -26) (end -11 26) (layer F.CrtYd) (width 0.12) (tstamp 699ff8d4-2c0e-4217-95dd-298b70b89404))
-        (fp_line (start -11 26) (end 11 26) (layer F.CrtYd) (width 0.12) (tstamp 72b8bd2c-7322-4211-94c6-b8b57c1ae45f))
-        (fp_line (start 11 26) (end 11 -26) (layer F.CrtYd) (width 0.12) (tstamp 81d02e3f-8a4a-4f4a-8c87-a49e720a351f))
-        (fp_line (start -10.5 -25.5) (end -10.5 25.5) (layer F.Fab) (width 0.12) (tstamp 2b9714fd-9cdd-4b0a-940e-6a9561081b60))
-        (fp_line (start 10.5 25.5) (end 10.5 -25.5) (layer F.Fab) (width 0.12) (tstamp 66e308bb-0f20-48b1-96bd-7e938eb86aff))
-        (fp_line (start 10.5 -24.2) (end 9.2 -25.5) (layer F.Fab) (width 0.12) (tstamp 80bc0467-dc46-4791-9307-44241d7966d4))
-        (fp_line (start 10.5 -25.5) (end -10.5 -25.5) (layer F.Fab) (width 0.12) (tstamp d2cf8733-14a9-4c23-b276-1bc10c1a5f51))
-        (fp_line (start -10.5 25.5) (end 10.5 25.5) (layer F.Fab) (width 0.12) (tstamp e840b107-3750-438e-b78f-29c9d0d23fc4))
-        (pad 1 thru_hole oval (at -8.82 -24.13) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 261789c0-418e-4ec0-8cdf-89abe1f96c5d) (net 19 "GP0"))
-        (pad 2 thru_hole oval (at -8.82 -21.59) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 82df91bd-b1f7-4cb5-a4b8-f014077ed225) (net 20 "GP1"))
-        (pad 3 thru_hole rect (at -8.82 -19.05) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp e2d28f85-8433-4782-86c1-698d98ca355b) (net 2 "GND"))
-        (pad 4 thru_hole oval (at -8.82 -16.51) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 6c215906-b1c0-41e7-a1ee-f64340a0df1f) (net 21 "GP2"))
-        (pad 5 thru_hole oval (at -8.82 -13.97) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 76c55b2f-8f9b-48f6-a612-6fe3631d36eb) (net 22 "GP3"))
-        (pad 6 thru_hole oval (at -8.82 -11.43) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 210013bf-6406-44cc-a685-766765aa871b) (net 23 "GP4"))
-        (pad 7 thru_hole oval (at -8.82 -8.89) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 2a1ac614-5190-4c1d-94c5-f92822392dbd) (net 24 "GP5"))
-        (pad 8 thru_hole rect (at -8.82 -6.35) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 3aca05ca-5eaa-49fe-b403-9e2bce888982) (net 2 "GND"))
-        (pad 9 thru_hole oval (at -8.82 -3.81) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp fc3ee03b-64c4-4765-a4db-f9ccddc815c0) (net 25 "GP6"))
-        (pad 10 thru_hole oval (at -8.82 -1.27) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 1cbf2788-2f4d-4a14-987b-1ca92d4e80a5) (net 26 "GP7"))
-        (pad 11 thru_hole oval (at -8.82 1.27) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp b8d2415c-f56e-4a89-978d-a2919d2209f5) (net 27 "GP8"))
-        (pad 12 thru_hole oval (at -8.82 3.81) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 721079ce-6e9b-4142-b40e-724402815846) (net 28 "GP9"))
-        (pad 13 thru_hole rect (at -8.82 6.35) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 156789ac-0299-4e4b-9bdc-aae415420eec) (net 2 "GND"))
-        (pad 14 thru_hole oval (at -8.82 8.89) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp fda6fba3-26de-4533-ab37-f87bb8ca8965) (net 29 "GP10"))
-        (pad 15 thru_hole oval (at -8.82 11.43) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp db248dbe-bef4-43e0-991f-f8907ae081d4) (net 18 "thumbfan_far_home"))
-        (pad 16 thru_hole oval (at -8.82 13.97) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 8b5154dc-4718-4a03-ad67-ed035a4319ce) (net 17 "thumbfan_near_home"))
-        (pad 17 thru_hole oval (at -8.82 16.51) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp eb64b7d2-d623-452c-9703-2bb0265ee337) (net 16 "matrix_inner_top"))
-        (pad 18 thru_hole rect (at -8.82 19.05) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp f7386878-6bd2-49fb-be47-6588e913174b) (net 2 "GND"))
-        (pad 19 thru_hole oval (at -8.82 21.59) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp fa8076fb-ecc2-4918-a4f3-511178e9ad37) (net 15 "matrix_inner_home"))
-        (pad 20 thru_hole oval (at -8.82 24.13) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 4b6b7c47-5e11-4065-b26e-9c14c9c8ee50) (net 14 "matrix_inner_bottom"))
-        (pad 21 thru_hole oval (at 8.82 24.13) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 7a45c78c-faae-432b-8399-806250e23db7) (net 11 "matrix_index_bottom"))
-        (pad 22 thru_hole oval (at 8.82 21.59) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 852f4f24-f0ec-4812-8953-10a1c9ba8b18) (net 12 "matrix_index_home"))
-        (pad 23 thru_hole rect (at 8.82 19.05) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 6fbe5d8d-e43a-4207-a531-c4dfe41759ce) (net 2 "GND"))
-        (pad 24 thru_hole oval (at 8.82 16.51) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 48f29450-601c-4f43-bede-558f16a2580a) (net 13 "matrix_index_top"))
-        (pad 25 thru_hole oval (at 8.82 13.97) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 0cf035fe-7441-41a9-8ecd-8633f9511a86) (net 8 "matrix_middle_bottom"))
-        (pad 26 thru_hole oval (at 8.82 11.43) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 4aa34793-001c-422a-9a9e-f2fa24b7c918) (net 9 "matrix_middle_home"))
-        (pad 27 thru_hole oval (at 8.82 8.89) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 07bfbc8a-823e-44b5-ab95-5c0659fd56bb) (net 10 "matrix_middle_top"))
-        (pad 28 thru_hole rect (at 8.82 6.35) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 6fd23c62-f256-47b1-9fb2-80a0473029fb) (net 2 "GND"))
-        (pad 29 thru_hole oval (at 8.82 3.81) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 0e54c542-e3a2-4db6-883d-37a3ad94739d) (net 7 "matrix_ring_top"))
-        (pad 30 thru_hole oval (at 8.82 1.27) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 49dcd950-fbab-4ac5-9a36-86d2c2a0259e) (net 6 "matrix_ring_home"))
-        (pad 31 thru_hole oval (at 8.82 -1.27) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 84cce8d0-f83b-4f08-af4b-1d62af837a54) (net 5 "matrix_ring_bottom"))
-        (pad 32 thru_hole oval (at 8.82 -3.81) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp da79c04c-a207-48dc-a5d7-8a078322a160) (net 1 "matrix_pinky_bottom"))
-        (pad 33 thru_hole rect (at 8.82 -6.35) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 9db6e273-f7b0-4ab9-9b75-cb2195ede133) (net 2 "GND"))
-        (pad 34 thru_hole oval (at 8.82 -8.89) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 36be125c-d820-40b1-81f5-37cb6c4c1027) (net 3 "matrix_pinky_home"))
-        (pad 35 thru_hole oval (at 8.82 -11.43) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 510cc5c4-e61c-4e17-93d1-bd10b62ad6fb) (net 30 "ADC_VREF"))
-        (pad 36 thru_hole oval (at 8.82 -13.97) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 33256a6e-b053-471b-ac8e-081487946d0e) (net 4 "matrix_pinky_top"))
-        (pad 37 thru_hole oval (at 8.82 -16.51) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp ac928fb2-0ce9-4e34-8e2d-402b47a0d641) (net 31 "3V3"))
-        (pad 38 thru_hole rect (at 8.82 -19.05) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp cb792c93-111c-4188-a8ba-8930e71f97d8) (net 2 "GND"))
-        (pad 39 thru_hole oval (at 8.82 -21.59) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp b8260a4c-72c5-48e1-9736-d2140182d3fc) (net 32 "VSYS"))
-        (pad 40 thru_hole oval (at 8.82 -24.13) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 1a60f562-a956-4d54-a00f-6201c5b12308) (net 33 "VBUS"))
-      )
-      
+        
+      (module MX (layer F.Cu) (tedit 5DD4F656)
+      (at 244.79250000000002 179.07 0)
 
+      
+      (fp_text reference "S18" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+
+      
+      (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
+      (fp_line (start -7 7) (end -6 7) (layer Dwgs.User) (width 0.15))
+      (fp_line (start -6 -7) (end -7 -7) (layer Dwgs.User) (width 0.15))
+      (fp_line (start -7 7) (end -7 6) (layer Dwgs.User) (width 0.15))
+      (fp_line (start 7 6) (end 7 7) (layer Dwgs.User) (width 0.15))
+      (fp_line (start 7 -7) (end 6 -7) (layer Dwgs.User) (width 0.15))
+      (fp_line (start 6 7) (end 7 7) (layer Dwgs.User) (width 0.15))
+      (fp_line (start 7 -7) (end 7 -6) (layer Dwgs.User) (width 0.15))
+    
+      
+      (pad "" np_thru_hole circle (at 0 0) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))
+
+      
+      (pad "" np_thru_hole circle (at 5.08 0) (size 1.7018 1.7018) (drill 1.7018) (layers *.Cu *.Mask))
+      (pad "" np_thru_hole circle (at -5.08 0) (size 1.7018 1.7018) (drill 1.7018) (layers *.Cu *.Mask))
+      
+        
+      
+      (fp_line (start -9.5 -9.5) (end 9.5 -9.5) (layer Dwgs.User) (width 0.15))
+      (fp_line (start 9.5 -9.5) (end 9.5 9.5) (layer Dwgs.User) (width 0.15))
+      (fp_line (start 9.5 9.5) (end -9.5 9.5) (layer Dwgs.User) (width 0.15))
+      (fp_line (start -9.5 9.5) (end -9.5 -9.5) (layer Dwgs.User) (width 0.15))
+      
+        
+            
+            (pad 1 thru_hole circle (at 2.54 -5.08) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 19 "thumbfan_far_home"))
+            (pad 2 thru_hole circle (at -3.81 -2.54) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 2 "GND"))
           
+        
+            
+            (pad 1 thru_hole circle (at -2.54 -5.08) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 19 "thumbfan_far_home"))
+            (pad 2 thru_hole circle (at 3.81 -2.54) (size 2.286 2.286) (drill 1.4986) (layers *.Cu *.Mask) (net 2 "GND"))
+          )
+        
+
+    (module "RPi_Pico_TH_oval_face_down"
+    (layer "F.Cu")
+    (attr through_hole)
+    (at 168.59250000000003 173.35500000000002 90)
+    (fp_text reference "U0" (at 0 0) (layer "F.Fab") hide
+      (effects (font (size 1 1) (thickness 0.15)))
+      (tstamp db43bf1b-fd5c-4a08-b779-663eec4fe496)
+    )
+    (pad "1" thru_hole oval (at 8.82 -24.13) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 261789c0-418e-4ec0-8cdf-89abe1f96c5d) (net 4 "matrix_pinky_top"))
+    (pad "2" thru_hole oval (at 8.82 -21.59) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 82df91bd-b1f7-4cb5-a4b8-f014077ed225) (net 3 "matrix_pinky_home"))
+    (pad "3" thru_hole rect (at 8.82 -19.05) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp e2d28f85-8433-4782-86c1-698d98ca355b) (net 2 "GND"))
+    (pad "4" thru_hole oval (at 8.82 -16.51) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 6c215906-b1c0-41e7-a1ee-f64340a0df1f) (net 1 "matrix_pinky_bottom"))
+    (pad "5" thru_hole oval (at 8.82 -13.97) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 76c55b2f-8f9b-48f6-a612-6fe3631d36eb) (net 5 "matrix_ring_bottom"))
+    (pad "6" thru_hole oval (at 8.82 -11.43) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 210013bf-6406-44cc-a685-766765aa871b) (net 6 "matrix_ring_home"))
+    (pad "7" thru_hole oval (at 8.82 -8.89) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 2a1ac614-5190-4c1d-94c5-f92822392dbd) (net 7 "matrix_ring_top"))
+    (pad "8" thru_hole rect (at 8.82 -6.35) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 3aca05ca-5eaa-49fe-b403-9e2bce888982) (net 2 "GND"))
+    (pad "9" thru_hole oval (at 8.82 -3.81) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp fc3ee03b-64c4-4765-a4db-f9ccddc815c0) (net 10 "matrix_middle_top"))
+    (pad "10" thru_hole oval (at 8.82 -1.27) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 1cbf2788-2f4d-4a14-987b-1ca92d4e80a5) (net 9 "matrix_middle_home"))
+    (pad "11" thru_hole oval (at 8.82 1.27) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp b8d2415c-f56e-4a89-978d-a2919d2209f5) (net 8 "matrix_middle_bottom"))
+    (pad "12" thru_hole oval (at 8.82 3.81) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 721079ce-6e9b-4142-b40e-724402815846) (net 13 "matrix_index_top"))
+    (pad "13" thru_hole rect (at 8.82 6.35) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 156789ac-0299-4e4b-9bdc-aae415420eec) (net 2 "GND"))
+    (pad "14" thru_hole oval (at 8.82 8.89) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp fda6fba3-26de-4533-ab37-f87bb8ca8965) (net 12 "matrix_index_home"))
+    (pad "15" thru_hole oval (at 8.82 11.43) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp db248dbe-bef4-43e0-991f-f8907ae081d4) (net 11 "matrix_index_bottom"))
+    (pad "16" thru_hole oval (at 8.82 13.97) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 8b5154dc-4718-4a03-ad67-ed035a4319ce) (net 20 "GP12"))
+    (pad "17" thru_hole oval (at 8.82 16.51) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp eb64b7d2-d623-452c-9703-2bb0265ee337) (net 14 "matrix_inner_bottom"))
+    (pad "18" thru_hole rect (at 8.82 19.05) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp f7386878-6bd2-49fb-be47-6588e913174b) (net 2 "GND"))
+    (pad "19" thru_hole oval (at 8.82 21.59) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp fa8076fb-ecc2-4918-a4f3-511178e9ad37) (net 15 "matrix_inner_home"))
+    (pad "20" thru_hole oval (at 8.82 24.13) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 4b6b7c47-5e11-4065-b26e-9c14c9c8ee50) (net 16 "matrix_inner_top"))
+    (pad "21" thru_hole oval (at -8.82 24.13) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 7a45c78c-faae-432b-8399-806250e23db7) (net 19 "thumbfan_far_home"))
+    (pad "22" thru_hole oval (at -8.82 21.59) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 852f4f24-f0ec-4812-8953-10a1c9ba8b18) (net 18 "thumbfan_home_home"))
+    (pad "23" thru_hole rect (at -8.82 19.05) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 6fbe5d8d-e43a-4207-a531-c4dfe41759ce) (net 2 "GND"))
+    (pad "24" thru_hole oval (at -8.82 16.51) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 48f29450-601c-4f43-bede-558f16a2580a) (net 17 "thumbfan_near_home"))
+    (pad "25" thru_hole oval (at -8.82 13.97) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 0cf035fe-7441-41a9-8ecd-8633f9511a86) (net 21 "GP19"))
+    (pad "26" thru_hole oval (at -8.82 11.43) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 4aa34793-001c-422a-9a9e-f2fa24b7c918) (net 22 "GP20"))
+    (pad "27" thru_hole oval (at -8.82 8.89) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 07bfbc8a-823e-44b5-ab95-5c0659fd56bb) (net 23 "GP21"))
+    (pad "28" thru_hole rect (at -8.82 6.35) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 6fd23c62-f256-47b1-9fb2-80a0473029fb) (net 2 "GND"))
+    (pad "29" thru_hole oval (at -8.82 3.81) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 0e54c542-e3a2-4db6-883d-37a3ad94739d) (net 24 "GP22"))
+    (pad "30" thru_hole oval (at -8.82 1.27) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 49dcd950-fbab-4ac5-9a36-86d2c2a0259e) (net 25 "GP26"))
+    (pad "31" thru_hole oval (at -8.82 -1.27) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 84cce8d0-f83b-4f08-af4b-1d62af837a54) (net 26 "GP27"))
+    (pad "32" thru_hole oval (at -8.82 -3.81) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp da79c04c-a207-48dc-a5d7-8a078322a160) (net 27 "GP28"))
+    (pad "33" thru_hole rect (at -8.82 -6.35) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 9db6e273-f7b0-4ab9-9b75-cb2195ede133) (net 2 "GND"))
+    (pad "34" thru_hole oval (at -8.82 -8.89) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 36be125c-d820-40b1-81f5-37cb6c4c1027) (net 28 "GP29"))
+    (pad "35" thru_hole oval (at -8.82 -11.43) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 510cc5c4-e61c-4e17-93d1-bd10b62ad6fb) (net 29 "ADC_VREF"))
+    (pad "36" thru_hole oval (at -8.82 -13.97) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 33256a6e-b053-471b-ac8e-081487946d0e) (net 30 "GP24"))
+    (pad "37" thru_hole oval (at -8.82 -16.51) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp ac928fb2-0ce9-4e34-8e2d-402b47a0d641) (net 31 "3V3"))
+    (pad "38" thru_hole rect (at -8.82 -19.05) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp cb792c93-111c-4188-a8ba-8930e71f97d8) (net 2 "GND"))
+    (pad "39" thru_hole oval (at -8.82 -21.59) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp b8260a4c-72c5-48e1-9736-d2140182d3fc) (net 32 "VSYS"))
+    (pad "40" thru_hole oval (at -8.82 -24.13) (size 1.84 1.7) (drill oval 1.16 1.02) (layers *.Cu *.Mask) (tstamp 1a60f562-a956-4d54-a00f-6201c5b12308) (net 33 "VBUS"))
+    )
+    
+
+        
       (module TRRS-PJ-320A-dual (layer F.Cu) (tedit 5970F8E5)
 
-      (at 240.96000000000004 167.8305 270)   
+      (at 244.79250000000002 104.77499999999999 0)   
 
       
       (fp_text reference "TRRS1" (at 0 14.2) (layer Dwgs.User) (effects (font (size 1 1) (thickness 0.15))))
@@ -1007,21 +1033,20 @@
       (fp_line (start 0.75 0) (end -5.35 0) (layer Dwgs.User) (width 0.15))
 
       
-          
-          
-          
-        (pad 1 thru_hole oval (at -2.3 11.3 270) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 32 "VSYS"))
-        (pad 2 thru_hole oval (at 2.3 10.2 270) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 2 "GND"))
-        (pad 3 thru_hole oval (at 2.3 6.2 270) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 27 "GP8"))
-        (pad 4 thru_hole oval (at 2.3 3.2 270) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 28 "GP9"))
-      
-          
-        (pad 1 thru_hole oval (at 0 11.3 270) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 32 "VSYS"))
-        (pad 2 thru_hole oval (at -4.6 10.2 270) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 2 "GND"))
-        (pad 3 thru_hole oval (at -4.6 6.2 270) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 28 "GP9"))
-        (pad 4 thru_hole oval (at -4.6 3.2 270) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 27 "GP8"))
-      )
         
+        
+        (pad 1 thru_hole oval (at 0 11.3 0) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 2 "GND"))
+        (pad 2 thru_hole oval (at -4.6 10.2 0) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 2 "GND"))
+        (pad 3 thru_hole oval (at -4.6 6.2 0) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 32 "VSYS"))
+        (pad 4 thru_hole oval (at -4.6 3.2 0) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 20 "GP12"))
+      
+        
+        (pad 1 thru_hole oval (at -4.6 11.3 0) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 2 "GND"))
+        (pad 2 thru_hole oval (at 0 10.2 0) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 2 "GND"))
+        (pad 3 thru_hole oval (at 0 6.2 0) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 32 "VSYS"))
+        (pad 4 thru_hole oval (at 0 3.2 0) (size 1.6 2.2) (drill oval 0.9 1.5) (layers *.Cu *.Mask) (net 20 "GP12"))
+      )
+      
 
             (gr_text "JLCJLCJLCJLC" (at 190.5 123.825 0) (layer F.SilkS)
                 (effects (font (size 1 1) (thickness 0.15)) )
@@ -1035,7 +1060,7 @@
 
     (module "MountingHole_2.2mm_M2_Pad_Via" (version 20210722) (generator pcbnew) (layer "F.Cu")
       (tedit 56DDB9C7)
-      (at 223.81500000000003 171.45 0) 
+      (at 235.26750000000004 169.545 0) 
     
       (fp_text reference "_4" (at 0 -3.2) (layer "F.SilkS") hide 
         (effects (font (size 1 1) (thickness 0.15)))
@@ -1116,18 +1141,18 @@
       (pad "1" thru_hole circle locked (at 1.65 0) (size 0.7 0.7) (drill 0.4) (layers *.Cu *.Mask) (tstamp cde0acf2-b3b4-46de-9f6e-3ab519744000))
       (pad "1" thru_hole circle locked (at 0 -1.65) (size 0.7 0.7) (drill 0.4) (layers *.Cu *.Mask) (tstamp ff0de415-ae11-46fb-b780-c24aee621212))
     )
-            (gr_line (start 142.875 182.9594839973703) (end 142.875 107.77499999999999) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 145.875 104.77499999999999) (end 235.3635180643045 104.77499999999999) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 238.35325257322495 107.52703260755379) (end 242.85473450892053 161.80122936388352) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 242.865 162.04919675632937) (end 242.865 187.5) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 239.865 190.5) (end 204.8802567774803 190.5) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 204.65008418454144 190.49115710823847) (end 145.64482740706114 185.9506411056088) (angle 90) (layer Edge.Cuts) (width 0.15))
+            (gr_line (start 142.875 182.89124247368423) (end 142.875 107.77499999999999) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 145.875 104.77499999999999) (end 244.94297008970588 104.77499999999999) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 247.92719999989208 107.46779999895125) (end 254.30172991018622 169.3918048418086) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 254.31750000000002 169.699004842857) (end 254.31750000000002 185.595) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 251.31750000000002 188.595) (end 197.246393 188.595) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 197.08871659447507 188.59085350497236) (end 145.71732359447512 185.8870959786566) (angle 90) (layer Edge.Cuts) (width 0.15))
 (gr_arc (start 145.875 107.77499999999999) (end 145.875 104.77499999999999) (angle -90) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 235.3635180643045 107.77499999999999) (end 238.35325256430448 107.5270326) (angle -85.25876255983363) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 239.865 162.04919675632937) (end 242.865 162.04919675632937) (angle -4.741237440159497) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 239.865 187.5) (end 239.865 190.5) (angle -90) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 204.8802567774803 187.5) (end 204.6500841774803 190.4911571) (angle -4.400297001419915) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 145.875 182.9594839973703) (end 142.875 182.9594839973703) (angle -85.59970299858014) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 244.94297008970588 107.77499999999999) (end 247.92719998970588 107.4678) (angle -84.1226099916367) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 251.31750000000002 169.699004842857) (end 254.31750000000002 169.699004842857) (angle -5.877390008356565) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 251.31750000000002 185.595) (end 251.31750000000002 188.595) (angle -90) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 197.246393 185.595) (end 197.0887166 188.5908535) (angle -3.0127856973452367) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 145.875 182.89124247368423) (end 142.875 182.89124247368423) (angle -86.98721430265584) (layer Edge.Cuts) (width 0.15))
             
 )
 
