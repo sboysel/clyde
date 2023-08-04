@@ -833,7 +833,7 @@
 
         
       (module MX (layer F.Cu) (tedit 5DD4F656)
-      (at 206.69250000000002 179.07 0)
+      (at 209.55 175.26 0)
 
       
       (fp_text reference "S16" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
@@ -877,7 +877,7 @@
 
         
       (module MX (layer F.Cu) (tedit 5DD4F656)
-      (at 225.74250000000004 179.07 0)
+      (at 228.60000000000002 175.26 0)
 
       
       (fp_text reference "S17" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
@@ -921,7 +921,7 @@
 
         
       (module MX (layer F.Cu) (tedit 5DD4F656)
-      (at 244.79250000000002 180.975 0)
+      (at 247.65 177.64124999999999 0)
 
       
       (fp_text reference "S18" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
@@ -1053,14 +1053,14 @@
             )
         
 
-            (gr_text "clyde v0.0.1" (at 190.5 142.875 0) (layer F.SilkS)
+            (gr_text "clyde v0.0.2" (at 190.5 142.875 0) (layer F.SilkS)
                 (effects (font (size 1 1) (thickness 0.15)) )
             )
         
 
     (module "MountingHole_2.2mm_M2_Pad_Via" (version 20210722) (generator pcbnew) (layer "F.Cu")
       (tedit 56DDB9C7)
-      (at 235.26750000000004 169.545 0) 
+      (at 238.12500000000003 165.73499999999999 0) 
     
       (fp_text reference "_4" (at 0 -3.2) (layer "F.SilkS") hide 
         (effects (font (size 1 1) (thickness 0.15)))
@@ -1141,18 +1141,18 @@
       (pad "1" thru_hole circle locked (at 1.65 0) (size 0.7 0.7) (drill 0.4) (layers *.Cu *.Mask) (tstamp cde0acf2-b3b4-46de-9f6e-3ab519744000))
       (pad "1" thru_hole circle locked (at 0 -1.65) (size 0.7 0.7) (drill 0.4) (layers *.Cu *.Mask) (tstamp ff0de415-ae11-46fb-b780-c24aee621212))
     )
-            (gr_line (start 142.875 182.88815625463917) (end 142.875 107.77499999999999) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 145.875 104.77499999999999) (end 244.94297008970588 104.77499999999999) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 247.92719999989208 107.46779999895125) (end 254.30172991018622 169.3918048418086) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 254.31750000000002 169.699004842857) (end 254.31750000000002 187.5) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 251.31750000000002 190.5) (end 235.34476865999997 190.5) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_line (start 235.19033465459398 190.49602240487596) (end 145.720565994594 185.8841786595152) (angle 90) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 145.875 107.77499999999999) (end 145.875 104.77499999999999) (angle -90) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 244.94297008970588 107.77499999999999) (end 247.92719998970588 107.4678) (angle -84.1226099916367) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 251.31750000000002 169.699004842857) (end 254.31750000000002 169.699004842857) (angle -5.877390008356565) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 251.31750000000002 187.5) (end 251.31750000000002 190.5) (angle -90) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 235.34476865999997 187.5) (end 235.19033465999996 190.4960224) (angle -2.9507764544792394) (layer Edge.Cuts) (width 0.15))
-(gr_arc (start 145.875 182.88815625463917) (end 142.875 182.88815625463917) (angle -87.04922354552087) (layer Edge.Cuts) (width 0.15))
+            (gr_line (start 142.875 185.16625) (end 142.875 106.77499999999999) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 144.875 104.77499999999999) (end 245.65000000000003 104.77499999999999) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 247.65000000000003 106.77499999999999) (end 247.65000000000003 166.11624999999998) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 249.65000000000003 168.11624999999998) (end 255.175 168.11624999999998) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 257.175 170.11624999999998) (end 257.175 185.16625) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_line (start 255.175 187.16625) (end 144.875 187.16625) (angle 90) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 144.875 106.77499999999999) (end 144.875 104.77499999999999) (angle -90) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 245.65000000000003 106.77499999999999) (end 247.65000000000003 106.77499999999999) (angle -90) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 249.65000000000003 166.11624999999998) (end 247.65000000000003 166.11624999999998) (angle -90) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 255.175 170.11624999999998) (end 257.175 170.11624999999998) (angle -90) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 255.175 185.16625) (end 255.175 187.16625) (angle -90) (layer Edge.Cuts) (width 0.15))
+(gr_arc (start 144.875 185.16625) (end 142.875 185.16625) (angle -90) (layer Edge.Cuts) (width 0.15))
             
 )
 
