@@ -1,3 +1,10 @@
+meta:
+  engine: 4.0.4
+  name: clyde
+  version: 1.0.0
+  author: sboysel
+  url: https://github.com/sboysel/clyde
+
 units:
   kx: U
   ky: U
@@ -42,17 +49,17 @@ outlines:
           shift: [-0.5kx, 0.5ky]
         # NE
         - ref: matrix_inner_top
-          shift: [1kx, 0.5ky]
+          shift: [1.6kx, 0.5ky]
         # SE
         - ref: thumbfan_far_home
-          shift: [0, 0.5ky]
-        - ref: thumbfan_far_home
-          shift: [0.5kx, 0.5ky]
-        - ref: thumbfan_far_home
+          shift: [0.6kx, -0.5ky]
+        - ref: thumbfan_near_home
+          shift: [-0.5kx, -0.5ky - 0.125ky]
+        - ref: matrix_middle_bottom
           shift: [0.5kx, -0.5ky]
         # SW
         - ref: matrix_pinky_bottom
-          shift: [-0.5kx, -0.5ky - 1.325ky]
+          shift: [-0.5kx, -0.5ky]
       fillet: 2
 
 pcbs:
@@ -68,18 +75,17 @@ pcbs:
         params:
           keycaps: true
           reverse: true
-          hotswap: false
+          hotswap: true
           from: "{{name}}"
           to: GND 
       pico:
         what: weact_pi_pico
         where:
-          ref: matrix_ring_bottom
-          shift: [-0.15kx, -1.1ky]
-          rotate: 90
+          ref: matrix_inner_home
+          shift: [1.05kx, 2]
         params:
-          orientation: 'down' # LHS: MCU buttons down
-                              # RHS: MCU buttons up
+          orientation: 'up' # LHS: MCU buttons down
+                            # RHS: MCU buttons up
           GP0: matrix_pinky_top
           GP1: matrix_pinky_home
           GP2: matrix_pinky_bottom
@@ -101,8 +107,9 @@ pcbs:
       trrs:
         what: trrs
         where:
-          ref: matrix_inner_top
-          shift: [0.85kx, 0.5ky]
+          ref: matrix_inner_bottom
+          shift: [1.5kx, -0.6ky]
+          rotate: 270
         params:
           A: GND    # ring
           B: GND    # ring
@@ -125,24 +132,29 @@ pcbs:
           ref: matrix_middle_home
           shift: [0, -0.5ky]
         params:
-          text: 'clyde v0.0.2'
+          text: 'clyde v1.0.0'
       mh_thumbfan:
         what: mountinghole 
         where:
           ref: thumbfan_home_home
           shift: [0.5kx, 0.5ky]
-      mh_mcu:
-        what: mountinghole 
-        where:
-          ref: matrix_pinky_bottom
-          shift: [0, -1.1ky]
-      mh_pinky:
+      mh_nw:
         what: mountinghole 
         where:
           ref: matrix_pinky_home
           shift: [0.5kx, 0.5ky]
-      mh_index:
+      mh_sw:
+        what: mountinghole 
+        where:
+          ref: matrix_pinky_bottom
+          shift: [0.5kx, 0.5ky]
+      mh_ne:
         what: mountinghole 
         where:
           ref: matrix_index_home
+          shift: [0.5kx, 0.5ky]
+      mh_se:
+        what: mountinghole 
+        where:
+          ref: matrix_index_bottom
           shift: [0.5kx, 0.5ky]

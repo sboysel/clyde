@@ -1,6 +1,6 @@
 {
     "name": "clyde",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "dependencies": {
         "@jscad/modeling": "2.12.0",
         "ergogen": "github:sboysel/ergogen#develop"
