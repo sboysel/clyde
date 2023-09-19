@@ -1,12 +1,13 @@
 # clyde
 
+v1.0.0
+
 - split ortholinear
 - 36 keys
 - diodeless, reversible PCB
+- hotswap
 - WeAct RP2040 Pi Pico
-- Purple
 
+## case design
 
-## notes
-
-LHS - MCU buttons down, VBUS is near the bottom of the PCB, GP0 is near the pinky column
+- https://www.printables.com/en/model/537646-crkbd-highpro-case

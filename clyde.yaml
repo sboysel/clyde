@@ -8,6 +8,16 @@ meta:
 units:
   kx: U
   ky: U
+  px: 0.5kx
+  py: 0.5ky
+  tx: 0
+  ty: 0.25ky
+  ts: 0.125ky
+  vx: 7
+  vy: 5
+  pcb_fillet: 2
+  case_fillet: 2
+  case_thickness: 6
 
 points:
   zones:
@@ -24,49 +34,115 @@ points:
         bottom:
         home:
         top:
-    thumbfan:
+    thumb:
       anchor:
         ref: matrix_index_bottom
-        shift: [0, -1.2ky]
+        shift: [tx, -1ky - ty]
       columns:
         near:
-        home:
+        middle:
         far:
           key:
-            stagger: -0.125ky
+            stagger: -ts
       rows:
-        home:
+        mods:
   key:
     padding: 1ky
     spread: 1kx
 
 outlines:
-  clyde:
+  switches:
+    - what: rectangle
+      where: true
+      size: 14
+      bound: false
+  _pcb:
     - what: polygon
       points:
         # NW
         - ref: matrix_pinky_top
-          shift: [-0.5kx, 0.5ky]
+          shift: [-px, py]
         # NE
         - ref: matrix_inner_top
-          shift: [1.6kx, 0.5ky]
+          shift: [kx + px + ts, py]
         # SE
-        - ref: thumbfan_far_home
-          shift: [0.6kx, -0.5ky]
-        - ref: thumbfan_near_home
-          shift: [-0.5kx, -0.5ky - 0.125ky]
+        - ref: thumb_far_mods
+          shift: [px + ts, -py]
+        - ref: thumb_near_mods
+          shift: [-px, -py - ts]
         - ref: matrix_middle_bottom
-          shift: [0.5kx, -0.5ky]
+          shift: [kx - px, -py]
         # SW
         - ref: matrix_pinky_bottom
-          shift: [-0.5kx, -0.5ky]
-      fillet: 2
+          shift: [-px, -py]
+  pcb:
+    - what: outline
+      name: _pcb
+      fillet: pcb_fillet
+  pcb-compartment:
+    - what: outline
+      name: _pcb
+      expand: 0.5
+      fillet: pcb_fillet
+  outer:
+    - what: outline
+      name: _pcb
+      expand: case_thickness
+      joints: 1
+      fillet: case_fillet
+  _mcu:
+    - what: polygon
+      points:
+        - ref: matrix_inner_top
+          shift: [px, py + 10]
+        - ref: thumb_middle_mods
+          shift: [px, py + ty / 2]
+        - ref: thumb_middle_mods
+          shift: [px + 10kx, py + ty / 2]
+        - ref: matrix_inner_top
+          shift: [px + 10kx, py + 10]
+      fillet: pcb_fillet + 4
+  plate:
+    - pcb
+    - -_mcu
+    - -switches
 
 pcbs:
+  clyde-plate:
+    outlines:
+      main:
+        outline: plate
+        footprints:
+    footprints:
+      mh_thumbfan:
+        what: mountinghole 
+        where:
+          ref: thumb_middle_mods
+          shift: [px, py]
+      mh_nw:
+        what: mountinghole 
+        where:
+          ref: matrix_pinky_home
+          shift: [px, py]
+      mh_sw:
+        what: mountinghole 
+        where:
+          ref: matrix_pinky_bottom
+          shift: [px, py]
+      mh_ne:
+        what: mountinghole 
+        where:
+          ref: matrix_index_home
+          shift: [px, py]
+      mh_se:
+        what: mountinghole 
+        where:
+          ref: matrix_index_bottom
+          shift: [px, py]
   clyde:
     outlines:
       main:
-        outline: clyde
+        outline: pcb
         footprints:
     footprints:
       mx:
@@ -78,11 +154,25 @@ pcbs:
           hotswap: true
           from: "{{name}}"
           to: GND 
+      via_left:
+        what: via
+        where: true
+        adjust:
+          shift: [-vx, -vy]
+        params:
+          net: "{{name}}"
+      via_right:
+        what: via
+        where: true
+        params:
+          net: "{{name}}"
+        adjust:
+          shift: [vx, -vy]
       pico:
         what: weact_pi_pico
         where:
           ref: matrix_inner_home
-          shift: [1.05kx, 2]
+          shift: [1.075kx, 3]
         params:
           orientation: 'up' # LHS: MCU buttons down
                             # RHS: MCU buttons up
@@ -101,14 +191,14 @@ pcbs:
           GP12: matrix_middle_top
           GP13: matrix_middle_home
           GP14: matrix_middle_bottom
-          GP17: thumbfan_far_home
-          GP18: thumbfan_home_home
-          GP19: thumbfan_near_home
+          GP17: thumb_far_mods
+          GP18: thumb_middle_mods
+          GP19: thumb_near_mods
       trrs:
         what: trrs
         where:
           ref: matrix_inner_bottom
-          shift: [1.5kx, -0.6ky]
+          shift: [1kx + px + ts, -py - 1]
           rotate: 270
         params:
           A: GND    # ring
@@ -133,28 +223,38 @@ pcbs:
           shift: [0, -0.5ky]
         params:
           text: 'clyde v1.0.0'
-      mh_thumbfan:
-        what: mountinghole 
+      h_thumbfan:
+        what: drill 
         where:
-          ref: thumbfan_home_home
-          shift: [0.5kx, 0.5ky]
-      mh_nw:
-        what: mountinghole 
+          ref: thumb_middle_mods
+          shift: [px, py]
+        params:
+          size: 3
+      h_nw:
+        what: drill 
         where:
           ref: matrix_pinky_home
-          shift: [0.5kx, 0.5ky]
-      mh_sw:
-        what: mountinghole 
+          shift: [px, py]
+        params:
+          size: 3
+      h_sw:
+        what: drill 
         where:
           ref: matrix_pinky_bottom
-          shift: [0.5kx, 0.5ky]
-      mh_ne:
-        what: mountinghole 
+          shift: [px, py]
+        params:
+          size: 3
+      h_ne:
+        what: drill 
         where:
           ref: matrix_index_home
-          shift: [0.5kx, 0.5ky]
-      mh_se:
-        what: mountinghole 
+          shift: [px, py]
+        params:
+          size: 3
+      h_se:
+        what: drill 
         where:
           ref: matrix_index_bottom
-          shift: [0.5kx, 0.5ky]
+          shift: [px, py]
+        params:
+          size: 3
