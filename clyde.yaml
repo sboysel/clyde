@@ -14,7 +14,7 @@ units:
   ty: 0.25ky
   ts: 0.125ky
   vx: 7
-  vy: 5
+  vy: -4
   pcb_fillet: 2
   case_fillet: 2
   case_thickness: 6
@@ -51,11 +51,6 @@ points:
     spread: 1kx
 
 outlines:
-  switches:
-    - what: rectangle
-      where: true
-      size: 14
-      bound: false
   _pcb:
     - what: polygon
       points:
@@ -64,47 +59,56 @@ outlines:
           shift: [-px, py]
         # NE
         - ref: matrix_inner_top
-          shift: [kx + px + ts, py]
+          shift: [px, py]
+        # E
+        - ref: matrix_inner_bottom
+          shift: [px, py]
+        - ref: matrix_inner_bottom
+          shift: [px + kx, py]
         # SE
         - ref: thumb_far_mods
-          shift: [px + ts, -py]
+          shift: [px, -py]
         - ref: thumb_near_mods
           shift: [-px, -py - ts]
+        # SW
+        - ref: matrix_pinky_bottom
+          shift: [-px, -ky - ty - py - ts]
+  _plate:
+    - what: polygon
+      points:
+        # NW
+        - ref: matrix_pinky_top
+          shift: [-px, py]
+        # NE
+        - ref: matrix_inner_top
+          shift: [px, py]
+        # E
+        - ref: matrix_inner_bottom
+          shift: [px, -py]
+        - ref: matrix_inner_bottom
+          shift: [px + kx, -py]
+        # SE
+        - ref: thumb_far_mods
+          shift: [px, -py]
+        - ref: thumb_near_mods
+          shift: [-px - ts, -py - ts]
         - ref: matrix_middle_bottom
-          shift: [kx - px, -py]
+          shift: [px - ts, -py]
         # SW
         - ref: matrix_pinky_bottom
           shift: [-px, -py]
+      fillet: pcb_fillet
   pcb:
     - what: outline
       name: _pcb
       fillet: pcb_fillet
-  pcb-compartment:
-    - what: outline
-      name: _pcb
-      expand: 0.5
-      fillet: pcb_fillet
-  outer:
-    - what: outline
-      name: _pcb
-      expand: case_thickness
-      joints: 1
-      fillet: case_fillet
-  _mcu:
-    - what: polygon
-      points:
-        - ref: matrix_inner_top
-          shift: [px, py + 10]
-        - ref: thumb_middle_mods
-          shift: [px, py + ty / 2]
-        - ref: thumb_middle_mods
-          shift: [px + 10kx, py + ty / 2]
-        - ref: matrix_inner_top
-          shift: [px + 10kx, py + 10]
-      fillet: pcb_fillet + 4
+  switches:
+    - what: rectangle
+      where: true
+      size: 14
+      bound: false
   plate:
-    - pcb
-    - -_mcu
+    - _plate
     - -switches
 
 pcbs:
@@ -114,31 +118,6 @@ pcbs:
         outline: plate
         footprints:
     footprints:
-      mh_thumbfan:
-        what: mountinghole 
-        where:
-          ref: thumb_middle_mods
-          shift: [px, py]
-      mh_nw:
-        what: mountinghole 
-        where:
-          ref: matrix_pinky_home
-          shift: [px, py]
-      mh_sw:
-        what: mountinghole 
-        where:
-          ref: matrix_pinky_bottom
-          shift: [px, py]
-      mh_ne:
-        what: mountinghole 
-        where:
-          ref: matrix_index_home
-          shift: [px, py]
-      mh_se:
-        what: mountinghole 
-        where:
-          ref: matrix_index_bottom
-          shift: [px, py]
   clyde:
     outlines:
       main:
@@ -158,7 +137,7 @@ pcbs:
         what: via
         where: true
         adjust:
-          shift: [-vx, -vy]
+          shift: [-vx, vy]
         params:
           net: "{{name}}"
       via_right:
@@ -167,48 +146,44 @@ pcbs:
         params:
           net: "{{name}}"
         adjust:
-          shift: [vx, -vy]
+          shift: [vx, vy]
       pico:
         what: weact_pi_pico
         where:
-          ref: matrix_inner_home
-          shift: [1.075kx, 3]
+          ref: matrix_ring_bottom
+          shift: [-2, -py - (ky + ty + ts) / 2]
+          rotate: 90
         params:
-          orientation: 'up' # LHS: MCU buttons down
-                            # RHS: MCU buttons up
+          orientation: 'down' # LHS: MCU buttons down
+                              # RHS: MCU buttons up
           GP0: matrix_pinky_top
           GP1: matrix_pinky_home
           GP2: matrix_pinky_bottom
-          GP3: matrix_index_bottom
-          GP4: matrix_index_home
-          GP5: matrix_index_top
-          GP6: matrix_inner_top
-          GP7: matrix_inner_home
-          GP8: matrix_inner_bottom
-          GP9: matrix_ring_bottom
-          GP10: matrix_ring_home
-          GP11: matrix_ring_top
-          GP12: matrix_middle_top
-          GP13: matrix_middle_home
-          GP14: matrix_middle_bottom
-          GP17: thumb_far_mods
-          GP18: thumb_middle_mods
-          GP19: thumb_near_mods
-      trrs:
-        what: trrs
+          GP3: matrix_ring_top
+          GP4: matrix_ring_home
+          GP5: matrix_ring_bottom
+          GP6: matrix_middle_top
+          GP7: matrix_middle_home
+          GP8: matrix_middle_bottom
+          GP9: matrix_index_top
+          GP10: matrix_index_home
+          GP11: matrix_index_bottom
+          GP12: matrix_inner_bottom
+          GP13: matrix_inner_home
+          GP14: matrix_inner_top
+          GP18: thumb_far_mods
+          GP19: thumb_middle_mods
+          GP20: thumb_near_mods
+      molex:
+        what: molex_441440003
         where:
-          ref: matrix_inner_bottom
-          shift: [1kx + px + ts, -py - 1]
-          rotate: 270
+          ref: matrix_inner_bottom 
+          shift: [kx, -0.4ky]
+          rotate: 180
         params:
-          A: GND    # ring
-          B: GND    # ring
-          C: VSYS   # power
-          D: GP16   # UART0 TX
-          reverse: true
-          symmetric: true
-          cross: false
-          stabilizers: false
+          POWER: VSYS
+          TX: GP16
+          RX: GP17
       jlc_text:
         what: text 
         where:
@@ -223,38 +198,23 @@ pcbs:
           shift: [0, -0.5ky]
         params:
           text: 'clyde v1.0.0'
-      h_thumbfan:
-        what: drill 
-        where:
-          ref: thumb_middle_mods
-          shift: [px, py]
-        params:
-          size: 3
-      h_nw:
-        what: drill 
+      m0:
+        what: smtso2020mtj
         where:
           ref: matrix_pinky_home
-          shift: [px, py]
-        params:
-          size: 3
-      h_sw:
-        what: drill 
-        where:
-          ref: matrix_pinky_bottom
-          shift: [px, py]
-        params:
-          size: 3
-      h_ne:
-        what: drill 
+          shift: [px, py + 1]
+      m1:
+        what: smtso2020mtj
         where:
           ref: matrix_index_home
-          shift: [px, py]
-        params:
-          size: 3
-      h_se:
-        what: drill 
+          shift: [px, py + 1]
+      m2:
+        what: smtso2020mtj
         where:
-          ref: matrix_index_bottom
-          shift: [px, py]
-        params:
-          size: 3
+          ref: thumb_middle_mods
+          shift: [px, py + 1]
+      m3:
+        what: smtso2020mtj
+        where:
+          ref: matrix_pinky_bottom
+          shift: [px, -py - (ky + ty + ts) / 2]
