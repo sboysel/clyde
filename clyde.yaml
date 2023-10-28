@@ -159,9 +159,9 @@ pcbs:
           GP0: matrix_pinky_top
           GP1: matrix_pinky_home
           GP2: matrix_pinky_bottom
-          GP3: matrix_ring_top
+          GP3: matrix_ring_bottom
           GP4: matrix_ring_home
-          GP5: matrix_ring_bottom
+          GP5: matrix_ring_top
           GP6: matrix_middle_top
           GP7: matrix_middle_home
           GP8: matrix_middle_bottom
