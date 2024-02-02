@@ -1,7 +1,13 @@
 # clyde
 
+v1.0.0
+
 - split ortholinear
-- 34 keys
+- 36 keys
 - diodeless, reversible PCB
-- Pi Pico
-- under 100mm^2
+- hotswap
+- WeAct RP2040 Pi Pico
+
+## case design
+
+- https://www.printables.com/en/model/537646-crkbd-highpro-case

@@ -1,0 +1,250 @@
+meta:
+  engine: 4.0.4
+  name: clyde
+  version: 1.0.0
+  author: sboysel
+  url: https://github.com/sboysel/clyde
+
+units:
+  kx: U
+  ky: U
+  px: 0.5kx
+  py: 0.5ky
+  tx: 0
+  ty: 0.25ky
+  ts: 0.125ky
+  vx: 7
+  vy: -4
+  pcb_fillet: 2
+  case_fillet: 2
+  case_thickness: 6
+
+points:
+  zones:
+    matrix:
+      anchor:
+        shift: [8kx, -8ky]
+      columns:
+        pinky:
+        ring:
+        middle:
+        index:
+        inner:
+      rows:
+        bottom:
+        home:
+        top:
+    thumb:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [tx, -1ky - ty]
+      columns:
+        near:
+        middle:
+        far:
+          key:
+            stagger: -ts
+      rows:
+        mods:
+  key:
+    padding: 1ky
+    spread: 1kx
+
+outlines:
+  _pcb:
+    - what: polygon
+      points:
+        # NW
+        - ref: matrix_pinky_top
+          shift: [-px, py]
+        # NE
+        - ref: matrix_inner_top
+          shift: [px, py]
+        # E
+        - ref: matrix_inner_bottom
+          shift: [px, py]
+        - ref: matrix_inner_bottom
+          shift: [px + kx, py]
+        # SE
+        - ref: thumb_far_mods
+          shift: [px, -py]
+        - ref: thumb_near_mods
+          shift: [-px, -py - ts]
+        # SW
+        - ref: matrix_pinky_bottom
+          shift: [-px, -ky - ty - py - ts]
+  _plate:
+    - what: polygon
+      points:
+        # NW
+        - ref: matrix_pinky_top
+          shift: [-px, py]
+        # NE
+        - ref: matrix_inner_top
+          shift: [px, py]
+        # E
+        - ref: matrix_inner_bottom
+          shift: [px, -py]
+        - ref: matrix_inner_bottom
+          shift: [px + kx, -py]
+        # SE
+        - ref: thumb_far_mods
+          shift: [px, -py]
+        - ref: thumb_near_mods
+          shift: [-px - ts, -py - ts]
+        - ref: matrix_middle_bottom
+          shift: [px - ts, -py - 1.5]
+        # SW
+        - ref: matrix_pinky_bottom
+          shift: [-px, -py - 1.5]
+      fillet: pcb_fillet
+  clyde-pcb:
+    - what: outline
+      name: _pcb
+      fillet: pcb_fillet
+  _switches:
+    - what: rectangle
+      where: true
+      size: 14
+      bound: false
+  clyde-switch-plate:
+    - _plate
+    - -_switches
+  _m0:
+    - what: circle
+      where:
+        ref: matrix_pinky_home
+        shift: [px, py + 1]
+      radius: 1.1
+  _m1:
+    - what: circle
+      where:
+        ref: matrix_index_home
+        shift: [px, py + 1]
+      radius: 1.1
+  _m2:
+    - what: circle
+      where:
+        ref: thumb_middle_mods
+        shift: [px, py + 1]
+      radius: 1.1
+  _m3:
+    - what: circle
+      where:
+        ref: matrix_pinky_bottom
+        shift: [px, -py - (ky + ty + ts) / 2]
+      radius: 1.1
+  clyde-bottom-plate:
+    - clyde-pcb
+    - -_m0
+    - -_m1
+    - -_m2
+    - -_m3
+
+pcbs:
+  clyde-switch-plate:
+    outlines:
+      main:
+        outline: clyde-switch-plate
+        footprints:
+    footprints:
+  clyde:
+    outlines:
+      main:
+        outline: clyde-pcb
+        footprints:
+    footprints:
+      mx:
+        what: mx
+        where: true
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+          from: "{{name}}"
+          to: GND 
+      via_left:
+        what: via
+        where: true
+        adjust:
+          shift: [-vx, vy]
+        params:
+          net: "{{name}}"
+      via_right:
+        what: via
+        where: true
+        params:
+          net: "{{name}}"
+        adjust:
+          shift: [vx, vy]
+      pico:
+        what: weact_pi_pico
+        where:
+          ref: matrix_ring_bottom
+          shift: [-2, -py - (ky + ty + ts) / 2]
+          rotate: 90
+        params:
+          orientation: 'down' # LHS: MCU buttons down
+                              # RHS: MCU buttons up
+          GP0: matrix_pinky_top
+          GP1: matrix_pinky_home
+          GP2: matrix_pinky_bottom
+          GP3: matrix_ring_bottom
+          GP4: matrix_ring_home
+          GP5: matrix_ring_top
+          GP6: matrix_middle_top
+          GP7: matrix_middle_home
+          GP8: matrix_middle_bottom
+          GP9: matrix_index_top
+          GP10: matrix_index_home
+          GP11: matrix_index_bottom
+          GP12: matrix_inner_bottom
+          GP13: matrix_inner_home
+          GP14: matrix_inner_top
+          GP18: thumb_far_mods
+          GP19: thumb_middle_mods
+          GP20: thumb_near_mods
+      molex:
+        what: molex_441440003
+        where:
+          ref: matrix_inner_bottom 
+          shift: [kx, -0.4ky]
+          rotate: 180
+        params:
+          POWER: VSYS
+          TX: GP16
+          RX: GP17
+      jlc_text:
+        what: text 
+        where:
+          ref: matrix_middle_top
+          shift: [0, -0.5ky]
+        params:
+          text: 'JLCJLCJLCJLC'
+      version_text:
+        what: text 
+        where:
+          ref: matrix_middle_home
+          shift: [0, -0.5ky]
+        params:
+          text: 'clyde v1.0.0'
+      m0:
+        what: smtso2020mtj
+        where:
+          ref: matrix_pinky_home
+          shift: [px, py + 1]
+      m1:
+        what: smtso2020mtj
+        where:
+          ref: matrix_index_home
+          shift: [px, py + 1]
+      m2:
+        what: smtso2020mtj
+        where:
+          ref: thumb_middle_mods
+          shift: [px, py + 1]
+      m3:
+        what: smtso2020mtj
+        where:
+          ref: matrix_pinky_bottom
+          shift: [px, -py - (ky + ty + ts) / 2]
