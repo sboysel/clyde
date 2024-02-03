@@ -9,5 +9,7 @@
 - WeAct RP2040 Pi Pico
 - PCB: diodeless, reversible, hotswap
 
+See `BOM` for complete list of parts and relevant numbers. Gerbers for PCB and switch plate in `prod`. Outline for bottom plate in `ergogen/outlines`.
+
 ![clyde](img/thumb.png)
 
